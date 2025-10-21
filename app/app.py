@@ -41,3 +41,14 @@ if not df_filtered.empty:
     st.dataframe(df_filtered[['station', 'line', 'seats_available', 'status']])
 else:
     st.warning("No stations match the current filter selection.")
+
+# 6️⃣ Color-coded status (optional)
+if not df_filtered.empty:
+    st.subheader("Seat Availability per Station")
+    for i, row in df_filtered.iterrows():
+        st.markdown(f"**{row['station']}**: <span style='color:{row['color']}'>{row['status']}</span>", unsafe_allow_html=True)
+
+# 7️⃣ Horizontal bar chart
+if not df_filtered.empty:
+    st.subheader("Seats Available Across Stations")
+    st.bar_chart(df_filtered.set_index('station')['seats_available'])
