@@ -1,5 +1,5 @@
 # Metro Seat Tracker 🚇
-A web app that tracks seat availability on Istanbul metro lines. Filter by line or status, sort stations, and view color-coded charts. Built to streamline commuting by helping users identify less crowded trains — combining Python, pandas, and Streamlit for an interactive experience.
+A web app that tracks seat availability on Istanbul metro lines. Filter by line or status, sort stations, and view color-coded charts. Built to streamline commuting by helping users identify less crowded trains, combining Python, pandas, and Streamlit for an interactive experience.
 
 **Live demo:** [Click here](https://nazaninniazi11-metroseattracker-appapp-qhhhos.streamlit.app/)
 
