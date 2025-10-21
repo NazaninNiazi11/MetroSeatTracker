@@ -13,29 +13,29 @@ def seat_status(seats):
     else:
         return "LOW", "#e74c3c"
 
-# 1️⃣ Filter by metro lines
+#  Filter by metro lines
 lines = df['line'].unique()
 selected_lines = st.multiselect("Select metro lines:", options=lines, default=lines)
 df_filtered = df[df['line'].isin(selected_lines)]
 
-# 2️⃣ Apply seat_status only if there are rows
+#  Apply seat_status only if there are rows
 if not df_filtered.empty:
     df_filtered['status'], df_filtered['color'] = zip(*df_filtered['seats_available'].apply(seat_status))
 else:
     df_filtered['status'] = []
     df_filtered['color'] = []
 
-# 3️⃣ Filter by seat status
+# Filter by seat status
 status_options = ["HIGH", "MEDIUM", "LOW"]
 selected_status = st.multiselect("Filter by seat status:", options=status_options, default=status_options)
 df_filtered = df_filtered[df_filtered['status'].isin(selected_status)] if not df_filtered.empty else df_filtered
 
-# 4️⃣ Sort by seats
+#  Sort by seats
 sort_option = st.selectbox("Sort by seats available:", ["Descending", "Ascending"])
 if not df_filtered.empty:
     df_filtered = df_filtered.sort_values(by="seats_available", ascending=(sort_option=="Ascending"))
 
-# 5️⃣ Display table or warning
+#  Display table or warning
 if not df_filtered.empty:
     st.subheader("Filtered Metro Seat Status")
     st.dataframe(df_filtered[['station', 'line', 'seats_available', 'status']])
